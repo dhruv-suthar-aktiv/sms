@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!-- Tree View for Clg Student-->
+		<record id="clg_student_tree_view" model="ir.ui.view">
+			<field name="name">clg_student.tree.view</field>
+			<field name="model">clg.student.detail</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="user_name"/>
+					<field name="mobile_no"/>
+					<field name="email_id"/>
+					<field name="address"/>
+					<field name="dob" optional="hide"/>
+					<field name="gender" optional="hide"/>
+				</tree>
+			</field>
+		</record>
+		<!-- Clg Student Search view -->
+		<record id="clg_student_search_view" model="ir.ui.view">
+			<field name="name">clg_
+      	student.search.view</field>
+			<field name="model">clg.student.detail</field>
+			<field name="arch" type="xml">
+				<search string="Search Students">
+					<field name="name"/>
+					<field name="user_name"/>
+					<field name="mobile_no"/>
+					<field name="email_id"/>
+					<field name="address"/>
+					<separator/>
+					<filter domain="[('gender', '=', 'male')]" name="male" string="Male"/>
+					<filter domain="[('gender', '=', 'female')]" name="female" string="Female"/>
+					<separator/>
+					<group expand="1" string="Group By">
+						<filter context="{'group_by':'gender'}" name="gender" string="Gender"/>
+					</group>
+				</search>
+			</field>
+		</record>
+		<!--Student Form view -->
+		<record id="clg_student_form_view" model="ir.ui.view">
+			<field name="name">clg_student.form.view</field>
+			<field name="model">clg.student.detail</field>
+			<field name="arch" type="xml">
+				<form string="Students">
+					<header>
+						<!-- <button name="generate_user_name" required="1" string="Generate User name" type="object"/>
+						<button name="search_func" string="Perform Search..." type="object"/> -->
+						<!-- <button name="search_read_func" string="Perform search and search_read..." type="object"/> -->
+					</header>
+					<sheet>
+						<group>
+							<h1>
+								<field name="name" placeholder="Name"/>
+							</h1>
+							<field name="user_name"/>
+							<field name="todos" options='{"no_open": False}'/>
+							<field name="id_no"/>
+						</group>
+						<group>
+							<field name="gender"/>
+							<field name="mobile_no" widget="phone"/>
+							<field name="email_id" widget="email"/>
+							<field name="address"/>
+							<field name="dob"/>
+							<field name="age"/>
+							<field name="courses"/>
+							<field name="spend_amt"/>
+
+						</group>
+						<group/>
+					</sheet>
+					<field name="res" readonly="1"></field>
+
+					
+				</form>
+			</field>
+		</record>
+		<!-- Action -->
+		<record id="clg_student_menu_action" model="ir.actions.act_window">
+			<field name="name">Students</field>
+			<field name="res_model">clg.student.detail</field>
+			<field name="view_mode">tree,form,search</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create The First Student</p>
+			</field>
+		</record>
+		<menuitem id="clg_menu" name="College Portal"/>
+		<menuitem action="clg_student_menu_action" id="clg_student_menu" name="Student" parent="college_portal.clg_menu"/>
+	</data>
+</odoo>

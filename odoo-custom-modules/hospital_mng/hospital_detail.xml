@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+         <!-- Tree View for Course-->
+        <record id="hospital_tree_view" model="ir.ui.view">
+          <field name="name">hospital.tree.view</field>
+          <field name="model">hospital.hospital</field>
+          <field name="arch" type="xml">
+            <tree>
+
+                <!-- <field name="thumbnail" widget="image" /> -->
+                <field name="name"/>
+                <!-- <field name="short_desc"/>
+                <field name="created_by"/>
+                <field name="rate"/>
+                <field name="requirements"/>        
+                <field name="long_desc"/>
+                <field name="is_discounted"/> -->
+            
+            </tree>
+          </field>
+        </record>
+
+         <!-- Form View for Course-->
+        <record id="hospital_form_view" model="ir.ui.view" >
+          <field name="name">hospital.form.view</field>
+          <field name="model">hospital.hospital</field>
+          <field name="arch" type="xml">
+            <form>
+
+                <sheet>
+                    <group>
+
+                <!-- <field name="thumbnail" widget="image"/> -->
+                <field name="name"
+                    ./>
+                <!-- <field name="short_desc"/>
+                <field name="created_by"/>
+                <field name="rate"/>
+                <field name="is_discounted"/>
+                <field name="st_id"/> -->
+
+                    </group>
+                   <!--  <notebook>
+                        <page autofocus="autofocus" name="requirements" string="requirements">
+                        <field name="requirements" placeholder="Requirements"/>     
+                        </page>
+                    
+                        <page autofocus="autofocus" name="long_desc" string="Long Description">
+                        <field name="long_desc" placeholder="Long Description"/>
+                        </page>
+
+                    </notebook> -->
+                </sheet>
+            </form>
+          </field>
+        </record>
+
+        <!-- Action -->
+        <record id="hospital_menu_action" model="ir.actions.act_window">
+            <field name="name">Hospital</field>
+            <field name="res_model">hospital.hospital</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create The First Rec</p>
+            </field>
+        </record>
+
+
+        <menuitem id="hospital_main" name="Hospital Mng"/>
+        <menuitem action="hospital_menu_action" id="hospital_submenu" name="Hospital Detail" parent="hospital_mng.hospital_main"
+            />
+
+    </data>
+</odoo>
