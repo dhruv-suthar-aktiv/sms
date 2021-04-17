@@ -1,2 +1,2 @@
 # odoo-custom-modules
-#newline
+
